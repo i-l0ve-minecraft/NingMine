@@ -256,9 +256,9 @@
         
         // Вариант 1: Если вы сгенерировали карту и загрузили тайлы
         // Раскомментируйте этот блок и укажите правильный путь:
-        /*
+
         const bounds = [[-3000, -3000], [3000, 3000]]; // Границы вашего мира
-        const tileLayer = L.tileLayer('/map/tiles/{z}/{x}/{y}.png', {
+        const tileLayer = L.tileLayer('gfgfgfg/unmined.js', {
             minZoom: -2,
             maxZoom: 8,
             bounds: bounds,
@@ -267,19 +267,19 @@
         }).addTo(map);
         
         map.setMaxBounds(bounds);
-        */
+
         
         // Вариант 2: Временная демо-карта (удалить после загрузки настоящей)
         // Пока используем текстуру травы как placeholder
-        const grassTexture = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==';
+      //  const grassTexture = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==';
         
-        const demoLayer = L.tileLayer('', {
-            tileSize: 256,
-            minZoom: -2,
-            maxZoom: 8,
-            noWrap: true,
-            attribution: 'Демо-режим | Загрузите тайлы вашего мира Minecraft'
-        }).addTo(map);
+      //  const demoLayer = L.tileLayer('', {
+      //      tileSize: 256,
+      //      minZoom: -2,
+      //      maxZoom: 8,
+      //      noWrap: true,
+     //       attribution: 'Демо-режим | Загрузите тайлы вашего мира Minecraft'
+      //  }).addTo(map);
         
         // Создаем простую текстуру травы для демо
         const renderDemoTiles = () => {

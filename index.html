@@ -1,29 +1,457 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
 <head>
-    <title>Тест Unmined</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Карта Minecraft | Сид: 5215507659080688903 | 1.21.10</title>
+    
+    <!-- Подключаем стили Unmined -->
+    <link rel="stylesheet" href="index.css">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* Сброс стилей */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0d1117;
+            color: #c9d1d9;
+            line-height: 1.6;
+        }
+        
+        /* Контейнер */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Шапка */
+        .header {
+            background: linear-gradient(135deg, #0d1117 0%, #161b22 100%);
+            padding: 25px;
+            border-radius: 15px;
+            border: 2px solid #238636;
+            margin-bottom: 30px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+        
+        .header h1 {
+            color: #58a6ff;
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+        }
+        
+        .header h1 i {
+            margin-right: 15px;
+        }
+        
+        .info-cards {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 15px;
+        }
+        
+        .info-card {
+            background: rgba(35, 134, 54, 0.1);
+            border: 2px solid #238636;
+            border-radius: 10px;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1rem;
+        }
+        
+        .seed-card {
+            color: #7ee787;
+            border-color: #7ee787;
+        }
+        
+        .version-card {
+            color: #ff7b72;
+            border-color: #ff7b72;
+        }
+        
+        /* Карта */
+        .map-container {
+            background: #0d1117;
+            border-radius: 15px;
+            border: 3px solid #30363d;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+            height: 70vh;
+            min-height: 500px;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+        
+        #map {
+            width: 100%;
+            height: 100%;
+        }
+        
+        /* Загрузка */
+        .loading {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(13, 17, 23, 0.95);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+        
+        .loader {
+            width: 50px;
+            height: 50px;
+            border: 4px solid rgba(88, 166, 255, 0.2);
+            border-top: 4px solid #58a6ff;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 20px;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Управление */
+        .controls {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            z-index: 500;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        
+        .control-btn {
+            width: 40px;
+            height: 40px;
+            background: rgba(13, 17, 23, 0.9);
+            border: 2px solid #58a6ff;
+            border-radius: 8px;
+            color: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+        }
+        
+        .control-btn:hover {
+            background: #58a6ff;
+            transform: scale(1.1);
+        }
+        
+        /* Подвал */
+        .footer {
+            text-align: center;
+            padding: 20px;
+            color: #8b949e;
+            font-size: 0.9rem;
+            border-top: 1px solid #30363d;
+            margin-top: 20px;
+        }
+        
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .map-container {
+                height: 60vh;
+                min-height: 400px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <div id="map" style="width: 800px; height: 600px;"></div>
+    <div class="container">
+        <!-- Шапка -->
+        <header class="header">
+            <h1>
+                <i class="fas fa-map-marked-alt"></i>
+                Карта Minecraft мира
+            </h1>
+            <div class="info-cards">
+                <div class="info-card seed-card">
+                    <i class="fas fa-seedling"></i>
+                    <span>Сид: 5215507659080688903</span>
+                </div>
+                <div class="info-card version-card">
+                    <i class="fas fa-code-branch"></i>
+                    <span>Версия: 1.21.10</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Карта -->
+        <div class="map-container">
+            <!-- Контейнер для карты -->
+            <div id="map"></div>
+            
+            <!-- Экран загрузки -->
+            <div class="loading" id="loading">
+                <div class="loader"></div>
+                <div class="loading-text" id="loadingText">Загрузка карты...</div>
+            </div>
+            
+            <!-- Управление -->
+            <div class="controls">
+                <button class="control-btn" id="zoomIn" title="Приблизить">
+                    <i class="fas fa-search-plus"></i>
+                </button>
+                <button class="control-btn" id="zoomOut" title="Отдалить">
+                    <i class="fas fa-search-minus"></i>
+                </button>
+                <button class="control-btn" id="resetView" title="К центру">
+                    <i class="fas fa-home"></i>
+                </button>
+                <button class="control-btn" id="fullscreenBtn" title="Полный экран">
+                    <i class="fas fa-expand"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Подвал -->
+        <footer class="footer">
+            <p>Карта Minecraft | Сид: 5215507659080688903 | Версия: 1.21.10</p>
+            <p>Используйте колесико мыши для управления картой</p>
+        </footer>
+    </div>
+
+    <!-- ========== SCRIPTS ========== -->
     
+    <!-- ВАЖНО: Для GitHub Pages нужно использовать BASE_URL -->
     <script>
-        window.unmined = {};
+        // Определяем базовый URL для GitHub Pages
+        const isGitHubPages = window.location.hostname.includes('github.io');
+        const repoName = window.location.pathname.split('/')[1] || '';
+        const BASE_URL = isGitHubPages ? `/${repoName}` : '';
+        
+        console.log('GitHub Pages:', isGitHubPages);
+        console.log('Repo name:', repoName);
+        console.log('Base URL:', BASE_URL);
+        
+        // Создаем глобальную переменную для Unmined
+        window.unmined = {
+            map: null,
+            options: {},
+            config: {},
+            baseUrl: BASE_URL
+        };
     </script>
-    <script src="unmined.js" onerror="alert('unmined.js не найден!')"></script>
     
+    <!-- Подключаем unmined.js с учетом BASE_URL -->
     <script>
-        setTimeout(() => {
-            if (window.unmined && window.unmined.createMap) {
-                alert('Unmined загружен! Создаем карту...');
-                window.unmined.createMap('map', {
-                    mapId: 'world',
-                    center: [0, 0],
-                    zoom: 0
-                });
-            } else {
-                alert('Unmined НЕ загружен! Проверьте файл.');
+        // Динамически загружаем unmined.js
+        const unminedScript = document.createElement('script');
+        unminedScript.src = BASE_URL ? `${BASE_URL}/unmined.js` : 'unmined.js';
+        
+        unminedScript.onload = function() {
+            console.log('unmined.js успешно загружен');
+            document.getElementById('loadingText').textContent = 'Инициализация карты...';
+            setTimeout(initializeMap, 500);
+        };
+        
+        unminedScript.onerror = function() {
+            console.error('Не удалось загрузить unmined.js');
+            document.getElementById('loading').innerHTML = `
+                <div style="text-align: center; color: #ff7b72;">
+                    <i class="fas fa-exclamation-triangle" style="font-size: 3rem; margin-bottom: 20px;"></i>
+                    <h3>Ошибка загрузки файла unmined.js</h3>
+                    <p>Проверьте наличие файла по пути:</p>
+                    <p style="font-family: monospace; background: rgba(0,0,0,0.3); padding: 10px; border-radius: 5px;">
+                        ${unminedScript.src}
+                    </p>
+                    <p style="margin-top: 20px; font-size: 0.9rem;">
+                        Убедитесь, что файл unmined.js находится в корне репозитория
+                    </p>
+                </div>
+            `;
+        };
+        
+        document.head.appendChild(unminedScript);
+    </script>
+    
+    <!-- Основной код -->
+    <script>
+        function initializeMap() {
+            const loading = document.getElementById('loading');
+            
+            console.log('Проверяем Unmined:', window.unmined);
+            
+            // Проверяем, загрузился ли unmined
+            if (typeof window.unmined.createMap === 'undefined') {
+                loading.innerHTML = `
+                    <div style="text-align: center; color: #ff7b72;">
+                        <h3>Unmined не инициализирован</h3>
+                        <p>Проверьте консоль браузера (F12) для подробностей</p>
+                    </div>
+                `;
+                return;
             }
-        }, 1000);
+            
+            try {
+                console.log('Создаем карту...');
+                
+                // ВАЖНО: Для GitHub Pages нужно указать правильный baseUrl
+                const map = window.unmined.createMap('map', {
+                    // Основные настройки
+                    mapId: 'world',
+                    imageFormat: 'png',
+                    
+                    // ВАЖНО: Указываем baseUrl для тайлов
+                    baseUrl: BASE_URL || '.',
+                    
+                    // Настройки отображения
+                    background: '#0d1117',
+                    sea: true,
+                    transparent: false,
+                    smoothLoading: true,
+                    
+                    // Начальная позиция
+                    center: [0, 0],
+                    zoom: 0,
+                    
+                    // Уровни зума
+                    minZoom: -2,
+                    maxZoom: 8,
+                    
+                    // Отладка
+                    debug: true
+                });
+                
+                // Сохраняем карту
+                window.unmined.map = map;
+                
+                console.log('Карта создана успешно!');
+                
+                // Скрываем загрузку
+                setTimeout(() => {
+                    loading.style.display = 'none';
+                }, 500);
+                
+                // Настраиваем управление
+                setupControls(map);
+                
+                // Добавляем точки
+                addPoints(map);
+                
+            } catch (error) {
+                console.error('Ошибка создания карты:', error);
+                loading.innerHTML = `
+                    <div style="text-align: center; color: #ff7b72;">
+                        <h3>Ошибка создания карты</h3>
+                        <p>${error.message}</p>
+                        <p style="margin-top: 20px; font-size: 0.9rem;">
+                            Возможно, проблема с путями к файлам на GitHub Pages
+                        </p>
+                    </div>
+                `;
+            }
+        }
+        
+        function setupControls(map) {
+            // Кнопки управления
+            document.getElementById('zoomIn').addEventListener('click', function() {
+                map.zoomIn();
+            });
+            
+            document.getElementById('zoomOut').addEventListener('click', function() {
+                map.zoomOut();
+            });
+            
+            document.getElementById('resetView').addEventListener('click', function() {
+                map.setView([0, 0], 0);
+            });
+            
+            document.getElementById('fullscreenBtn').addEventListener('click', function() {
+                const mapContainer = document.querySelector('.map-container');
+                if (!document.fullscreenElement) {
+                    if (mapContainer.requestFullscreen) {
+                        mapContainer.requestFullscreen();
+                    }
+                    this.innerHTML = '<i class="fas fa-compress"></i>';
+                } else {
+                    if (document.exitFullscreen) {
+                        document.exitFullscreen();
+                    }
+                    this.innerHTML = '<i class="fas fa-expand"></i>';
+                }
+            });
+        }
+        
+        function addPoints(map) {
+            // Точки для вашего мира
+            const points = [
+                {x: 0, z: 0, name: "Спавн", color: "#58a6ff", icon: "flag"},
+                {x: 150, z: -120, name: "Деревня", color: "#7ee787", icon: "home"},
+                {x: -85, z: 200, name: "Шахта", color: "#d2a8ff", icon: "mountain"},
+                {x: 300, z: 180, name: "Портал", color: "#ff7b72", icon: "fire"}
+            ];
+            
+            // Добавляем маркеры если API доступно
+            if (typeof window.unmined.Marker !== 'undefined') {
+                points.forEach(point => {
+                    try {
+                        const marker = new window.unmined.Marker({
+                            x: point.x,
+                            z: point.z,
+                            title: point.name,
+                            color: point.color,
+                            icon: point.icon
+                        });
+                        
+                        if (map.addMarker) {
+                            map.addMarker(marker);
+                        }
+                    } catch (error) {
+                        console.warn('Не удалось добавить маркер:', error);
+                    }
+                });
+            }
+        }
+        
+        // Проверка файлов
+        console.log('=== ПРОВЕРКА ФАЙЛОВ ===');
+        
+        const filesToCheck = [
+            'unmined.js',
+            'index.css',
+            'tiles/0/0/0.png'
+        ];
+        
+        filesToCheck.forEach(file => {
+            const url = BASE_URL ? `${BASE_URL}/${file}` : file;
+            fetch(url)
+                .then(response => {
+                    console.log(`${file}: ${response.ok ? '✓' : '✗'}`);
+                })
+                .catch(() => {
+                    console.log(`${file}: ✗ (ошибка загрузки)`);
+                });
+        });
     </script>
 </body>
 </html>

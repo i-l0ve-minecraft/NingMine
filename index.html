@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Карта Minecraft сервера | Версия 1.21.10</title>
+    <title>Карта Minecraft | Сид: 5215507659080688903 | 1.21.10</title>
     
     <!-- Font Awesome для иконок -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -18,8 +18,8 @@
         
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #1a1a2e;
-            color: #e6e6e6;
+            background: #0d1117;
+            color: #c9d1d9;
             line-height: 1.6;
             overflow-x: hidden;
         }
@@ -33,12 +33,12 @@
         
         /* Шапка */
         .header {
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            background: linear-gradient(135deg, #0d1117 0%, #161b22 100%);
             padding: 25px 0;
-            border-bottom: 3px solid #4cc9f0;
+            border-bottom: 3px solid #238636;
             margin-bottom: 30px;
             border-radius: 0 0 15px 15px;
-            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
         }
         
         .header-content {
@@ -46,17 +46,17 @@
         }
         
         .header h1 {
-            color: #4cc9f0;
+            color: #58a6ff;
             font-size: 2.5rem;
             margin-bottom: 15px;
-            text-shadow: 0 0 15px rgba(76, 201, 240, 0.3);
+            text-shadow: 0 0 10px rgba(88, 166, 255, 0.3);
         }
         
         .header h1 i {
             margin-right: 15px;
         }
         
-        .server-info {
+        .info-cards {
             display: flex;
             justify-content: center;
             gap: 20px;
@@ -65,21 +65,24 @@
         }
         
         .info-card {
-            background: rgba(76, 201, 240, 0.1);
-            border: 2px solid #4cc9f0;
+            background: rgba(35, 134, 54, 0.1);
+            border: 2px solid #238636;
             border-radius: 12px;
             padding: 12px 25px;
             display: flex;
             align-items: center;
             gap: 12px;
             font-size: 1.1rem;
-            color: #4cc9f0;
         }
         
-        .player-count {
-            background: rgba(240, 84, 84, 0.1);
-            border-color: #f05454;
-            color: #f05454;
+        .seed-card {
+            color: #7ee787;
+            border-color: #7ee787;
+        }
+        
+        .version-card {
+            color: #ff7b72;
+            border-color: #ff7b72;
         }
         
         /* Основной контент */
@@ -98,20 +101,20 @@
         /* Панель с точками */
         .points-panel {
             flex: 0 0 350px;
-            background: linear-gradient(135deg, #16213e 0%, #1a1a2e 100%);
+            background: linear-gradient(135deg, #161b22 0%, #0d1117 100%);
             border-radius: 15px;
             padding: 25px;
-            border: 2px solid #4cc9f0;
+            border: 2px solid #30363d;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
             max-height: 700px;
             overflow-y: auto;
         }
         
         .points-panel h2 {
-            color: #4cc9f0;
+            color: #58a6ff;
             margin-bottom: 25px;
             padding-bottom: 15px;
-            border-bottom: 2px solid rgba(76, 201, 240, 0.3);
+            border-bottom: 2px solid #30363d;
             font-size: 1.5rem;
         }
         
@@ -122,18 +125,18 @@
         }
         
         .point-card {
-            background: rgba(30, 30, 46, 0.7);
+            background: rgba(48, 54, 61, 0.5);
             border-radius: 10px;
             padding: 18px;
             cursor: pointer;
             transition: all 0.3s ease;
-            border-left: 4px solid #4cc9f0;
+            border-left: 4px solid #58a6ff;
         }
         
         .point-card:hover {
-            background: rgba(30, 30, 46, 0.9);
+            background: rgba(48, 54, 61, 0.8);
             transform: translateX(5px);
-            border-left-color: #f05454;
+            border-left-color: #7ee787;
         }
         
         .point-header {
@@ -147,7 +150,7 @@
             width: 40px;
             height: 40px;
             border-radius: 50%;
-            background: #4cc9f0;
+            background: #238636;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -156,22 +159,22 @@
         }
         
         .point-info h3 {
-            color: #e6e6e6;
+            color: #c9d1d9;
             font-size: 1.1rem;
             margin-bottom: 5px;
         }
         
         .point-type {
             font-size: 0.8rem;
-            color: #b8b8b8;
-            background: rgba(76, 201, 240, 0.1);
+            color: #8b949e;
+            background: rgba(88, 166, 255, 0.1);
             padding: 3px 10px;
             border-radius: 12px;
             display: inline-block;
         }
         
         .point-desc {
-            color: #b8b8b8;
+            color: #8b949e;
             font-size: 0.9rem;
             margin-bottom: 12px;
             line-height: 1.5;
@@ -182,7 +185,7 @@
             padding: 8px 12px;
             border-radius: 6px;
             font-family: 'Courier New', monospace;
-            color: #72efdd;
+            color: #7ee787;
             font-size: 0.9rem;
         }
         
@@ -193,10 +196,10 @@
         }
         
         .map-container {
-            background: #16213e;
+            background: #0d1117;
             border-radius: 15px;
-            border: 3px solid #4cc9f0;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+            border: 3px solid #30363d;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
             height: 700px;
             position: relative;
             overflow: hidden;
@@ -221,8 +224,8 @@
         .control-btn {
             width: 48px;
             height: 48px;
-            background: rgba(22, 33, 62, 0.9);
-            border: 2px solid #4cc9f0;
+            background: rgba(13, 17, 23, 0.9);
+            border: 2px solid #58a6ff;
             border-radius: 10px;
             color: white;
             cursor: pointer;
@@ -234,9 +237,9 @@
         }
         
         .control-btn:hover {
-            background: #4cc9f0;
+            background: #58a6ff;
             transform: scale(1.1);
-            box-shadow: 0 5px 15px rgba(76, 201, 240, 0.3);
+            box-shadow: 0 5px 15px rgba(88, 166, 255, 0.3);
         }
         
         /* Панель координат */
@@ -244,17 +247,17 @@
             position: absolute;
             bottom: 20px;
             left: 20px;
-            background: rgba(22, 33, 62, 0.9);
+            background: rgba(13, 17, 23, 0.9);
             padding: 15px 20px;
             border-radius: 10px;
-            border: 2px solid #72efdd;
+            border: 2px solid #7ee787;
             z-index: 1000;
             min-width: 200px;
             font-family: 'Courier New', monospace;
         }
         
         .coords-header {
-            color: #72efdd;
+            color: #7ee787;
             font-size: 0.9rem;
             margin-bottom: 10px;
             display: flex;
@@ -263,7 +266,7 @@
         }
         
         .coords-values {
-            color: #4cc9f0;
+            color: #58a6ff;
             font-size: 1.1rem;
         }
         
@@ -276,16 +279,16 @@
             position: absolute;
             bottom: 20px;
             right: 20px;
-            background: rgba(22, 33, 62, 0.9);
+            background: rgba(13, 17, 23, 0.9);
             padding: 15px;
             border-radius: 10px;
-            border: 2px solid #f05454;
+            border: 2px solid #ff7b72;
             z-index: 1000;
             max-width: 220px;
         }
         
         .legend-header {
-            color: #f05454;
+            color: #ff7b72;
             margin-bottom: 12px;
             font-size: 1rem;
             display: flex;
@@ -315,7 +318,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(22, 33, 62, 0.95);
+            background: rgba(13, 17, 23, 0.95);
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -326,8 +329,8 @@
         .loader {
             width: 60px;
             height: 60px;
-            border: 5px solid rgba(76, 201, 240, 0.2);
-            border-top: 5px solid #4cc9f0;
+            border: 5px solid rgba(88, 166, 255, 0.2);
+            border-top: 5px solid #58a6ff;
             border-radius: 50%;
             animation: spin 1s linear infinite;
             margin-bottom: 20px;
@@ -339,15 +342,15 @@
         }
         
         .loading-text {
-            color: #4cc9f0;
+            color: #58a6ff;
             font-size: 1.2rem;
         }
         
         /* Подвал */
         .footer {
-            background: linear-gradient(135deg, #16213e 0%, #1a1a2e 100%);
+            background: linear-gradient(135deg, #161b22 0%, #0d1117 100%);
             padding: 25px 0;
-            border-top: 2px solid rgba(76, 201, 240, 0.3);
+            border-top: 2px solid #30363d;
             margin-top: 40px;
             border-radius: 15px 15px 0 0;
         }
@@ -357,7 +360,7 @@
         }
         
         .footer p {
-            color: #b8b8b8;
+            color: #8b949e;
             margin: 8px 0;
             font-size: 0.9rem;
         }
@@ -368,17 +371,17 @@
         }
         
         .points-panel::-webkit-scrollbar-track {
-            background: rgba(76, 201, 240, 0.1);
+            background: rgba(48, 54, 61, 0.3);
             border-radius: 4px;
         }
         
         .points-panel::-webkit-scrollbar-thumb {
-            background: #4cc9f0;
+            background: #58a6ff;
             border-radius: 4px;
         }
         
         .points-panel::-webkit-scrollbar-thumb:hover {
-            background: #f05454;
+            background: #7ee787;
         }
         
         /* Адаптивность */
@@ -422,7 +425,7 @@
                 font-size: 1.6rem;
             }
             
-            .server-info {
+            .info-cards {
                 gap: 10px;
             }
             
@@ -437,39 +440,6 @@
                 font-size: 1.1rem;
             }
         }
-        
-        /* Дополнительные элементы */
-        .server-stats {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 15px;
-            flex-wrap: wrap;
-        }
-        
-        .stat-item {
-            background: rgba(30, 30, 46, 0.7);
-            padding: 8px 15px;
-            border-radius: 8px;
-            font-size: 0.9rem;
-            color: #72efdd;
-        }
-        
-        .online-dot {
-            display: inline-block;
-            width: 8px;
-            height: 8px;
-            background: #72efdd;
-            border-radius: 50%;
-            margin-right: 5px;
-            animation: pulse 2s infinite;
-        }
-        
-        @keyframes pulse {
-            0% { opacity: 1; }
-            50% { opacity: 0.5; }
-            100% { opacity: 1; }
-        }
     </style>
 </head>
 <body>
@@ -478,29 +448,17 @@
         <header class="header">
             <div class="header-content">
                 <h1>
-                    <i class="fas fa-globe"></i>
-                    Карта Minecraft сервера
+                    <i class="fas fa-map-marked-alt"></i>
+                    Карта Minecraft мира
                 </h1>
-                
-                <div class="server-info">
-                    <div class="info-card">
+                <div class="info-cards">
+                    <div class="info-card seed-card">
+                        <i class="fas fa-seedling"></i>
+                        <span>Сид: 5215507659080688903</span>
+                    </div>
+                    <div class="info-card version-card">
                         <i class="fas fa-code-branch"></i>
                         <span>Версия: 1.21.10</span>
-                    </div>
-                    <div class="info-card player-count">
-                        <i class="fas fa-users"></i>
-                        <span>Игроков онлайн: <span id="playerCount">12</span></span>
-                    </div>
-                </div>
-                
-                <div class="server-stats">
-                    <div class="stat-item">
-                        <span class="online-dot"></span>
-                        Сервер онлайн
-                    </div>
-                    <div class="stat-item">
-                        <i class="fas fa-map"></i>
-                        Карта обновляется в реальном времени
                     </div>
                 </div>
             </div>
@@ -510,7 +468,7 @@
         <div class="content-wrapper">
             <!-- Панель с точками -->
             <div class="points-panel">
-                <h2><i class="fas fa-map-marker-alt"></i> Ключевые точки</h2>
+                <h2><i class="fas fa-map-pin"></i> Ключевые точки</h2>
                 <div class="points-list" id="pointsList">
                     <!-- Точки будут добавлены через JavaScript -->
                 </div>
@@ -564,19 +522,19 @@
                             Легенда
                         </div>
                         <div class="legend-item">
-                            <div class="legend-color" style="background-color: #4cc9f0;"></div>
+                            <div class="legend-color" style="background-color: #58a6ff;"></div>
                             <span>Основные точки</span>
                         </div>
                         <div class="legend-item">
-                            <div class="legend-color" style="background-color: #72efdd;"></div>
+                            <div class="legend-color" style="background-color: #7ee787;"></div>
                             <span>Безопасные зоны</span>
                         </div>
                         <div class="legend-item">
-                            <div class="legend-color" style="background-color: #f05454;"></div>
+                            <div class="legend-color" style="background-color: #ff7b72;"></div>
                             <span>Опасные зоны</span>
                         </div>
                         <div class="legend-item">
-                            <div class="legend-color" style="background-color: #7209b7;"></div>
+                            <div class="legend-color" style="background-color: #d2a8ff;"></div>
                             <span>Ресурсы</span>
                         </div>
                     </div>
@@ -587,7 +545,7 @@
         <!-- Подвал -->
         <footer class="footer">
             <div class="footer-content">
-                <p>Интерактивная карта Minecraft сервера</p>
+                <p>Карта сгенерирована Unmined | Сид мира: 5215507659080688903</p>
                 <p>Версия Minecraft: 1.21.10 | Карта обновляется автоматически</p>
                 <p>Используйте колесико мыши для управления картой</p>
             </div>
@@ -611,7 +569,7 @@
     <script src="./unmined.js"></script>
     
     <script>
-        // Данные точек для мира (сид 5215507659080688903 удален из интерфейса)
+        // Данные точек для мира
         const minecraftPoints = [
             {
                 id: 1,
@@ -621,7 +579,7 @@
                 z: 0,
                 type: "spawn",
                 icon: "flag",
-                color: "#4cc9f0"
+                color: "#58a6ff"
             },
             {
                 id: 2,
@@ -631,17 +589,17 @@
                 z: -150,
                 type: "village",
                 icon: "home",
-                color: "#72efdd"
+                color: "#7ee787"
             },
             {
                 id: 3,
-                name: "Алмазная шахта",
+                name: "Шахта",
                 description: "Богатая шахта с алмазами на глубине",
                 x: -180,
                 z: 240,
                 type: "mine",
                 icon: "mountain",
-                color: "#7209b7"
+                color: "#d2a8ff"
             },
             {
                 id: 4,
@@ -651,7 +609,7 @@
                 z: 320,
                 type: "portal",
                 icon: "fire",
-                color: "#f05454"
+                color: "#ff7b72"
             },
             {
                 id: 5,
@@ -661,7 +619,7 @@
                 z: -500,
                 type: "monument",
                 icon: "water",
-                color: "#4cc9f0"
+                color: "#58a6ff"
             },
             {
                 id: 6,
@@ -671,7 +629,7 @@
                 z: -280,
                 type: "mansion",
                 icon: "landmark",
-                color: "#f05454"
+                color: "#ff7b72"
             },
             {
                 id: 7,
@@ -681,7 +639,7 @@
                 z: 180,
                 type: "fortress",
                 icon: "fortress",
-                color: "#7209b7"
+                color: "#d2a8ff"
             },
             {
                 id: 8,
@@ -691,7 +649,7 @@
                 z: 90,
                 type: "farm",
                 icon: "wheat-alt",
-                color: "#72efdd"
+                color: "#7ee787"
             },
             {
                 id: 9,
@@ -701,7 +659,7 @@
                 z: -200,
                 type: "trade",
                 icon: "store",
-                color: "#4cc9f0"
+                color: "#58a6ff"
             },
             {
                 id: 10,
@@ -711,27 +669,7 @@
                 z: 450,
                 type: "village",
                 icon: "igloo",
-                color: "#72efdd"
-            },
-            {
-                id: 11,
-                name: "Эндер портал",
-                description: "Активированный портал в Энд",
-                x: -220,
-                z: 380,
-                type: "portal",
-                icon: "eye",
-                color: "#f05454"
-            },
-            {
-                id: 12,
-                name: "Общественный склад",
-                description: "Склад с общими ресурсами",
-                x: 80,
-                z: -80,
-                type: "storage",
-                icon: "box-open",
-                color: "#4cc9f0"
+                color: "#7ee787"
             }
         ];
         
@@ -745,8 +683,7 @@
             mansion: "fas fa-landmark",
             fortress: "fas fa-chess-rook",
             farm: "fas fa-wheat-alt",
-            trade: "fas fa-store",
-            storage: "fas fa-box-open"
+            trade: "fas fa-store"
         };
         
         // Названия типов на русском
@@ -759,22 +696,18 @@
             mansion: "Особняк",
             fortress: "Крепость",
             farm: "Ферма",
-            trade: "Торговля",
-            storage: "Склад"
+            trade: "Торговля"
         };
         
         // Инициализация при загрузке страницы
         document.addEventListener('DOMContentLoaded', function() {
-            console.log('Загрузка интерактивной карты сервера...');
+            console.log('Страница загружена, начинаем инициализацию...');
             
-            // Отображаем список точек
+            // Сначала отображаем список точек
             renderPointsList();
             
-            // Инициализируем карту с задержкой
+            // Затем инициализируем карту с небольшой задержкой
             setTimeout(initializeUnminedMap, 100);
-            
-            // Случайное обновление количества игроков
-            updatePlayerCount();
         });
         
         // Функция отображения списка точек
@@ -820,12 +753,12 @@
                     
                     // Подсвечиваем активную точку
                     document.querySelectorAll('.point-card').forEach(card => {
-                        card.style.background = 'rgba(30, 30, 46, 0.7)';
-                        card.style.borderLeftColor = '#4cc9f0';
+                        card.style.background = 'rgba(48, 54, 61, 0.5)';
+                        card.style.borderLeftColor = '#58a6ff';
                     });
                     
-                    this.style.background = 'rgba(76, 201, 240, 0.2)';
-                    this.style.borderLeftColor = '#f05454';
+                    this.style.background = 'rgba(88, 166, 255, 0.2)';
+                    this.style.borderLeftColor = '#7ee787';
                 });
                 
                 pointsList.appendChild(pointElement);
@@ -836,43 +769,62 @@
         function initializeUnminedMap() {
             const loadingOverlay = document.getElementById('loadingOverlay');
             
-            console.log('Инициализация карты...');
+            console.log('Проверяем загрузку Unmined...');
             
-            // Проверяем загрузку unmined.js
+            // Проверяем, загрузился ли unmined.js
             if (typeof window.unmined === 'undefined' || typeof window.unmined.createMap === 'undefined') {
                 console.error('ОШИБКА: Unmined не загрузился!');
                 
+                // Показываем ошибку
                 loadingOverlay.innerHTML = `
-                    <div style="text-align: center; color: #f05454;">
+                    <div style="text-align: center; color: #ff7b72;">
                         <i class="fas fa-exclamation-triangle" style="font-size: 3rem; margin-bottom: 20px;"></i>
-                        <h3 style="margin-bottom: 15px; color: #f05454;">Ошибка загрузки карты</h3>
-                        <p>Файл unmined.js не найден</p>
-                        <div style="margin-top: 20px; font-size: 0.9rem; color: #b8b8b8;">
-                            <p>Убедитесь, что все файлы карты находятся в корневой папке</p>
+                        <h3 style="margin-bottom: 15px; color: #ff7b72;">Ошибка загрузки карты</h3>
+                        <p>Файл unmined.js не найден в корневой папке</p>
+                        <div style="margin-top: 20px; font-size: 0.9rem; color: #8b949e;">
+                            <p>Убедитесь, что в корневой папке есть:</p>
+                            <ul style="text-align: left; display: inline-block; margin-top: 10px;">
+                                <li>unmined.js</li>
+                                <li>tiles/ папка с тайлами</li>
+                                <li>lib/ папка с библиотеками</li>
+                            </ul>
                         </div>
                     </div>
                 `;
                 return;
             }
             
-            console.log('Unmined загружен, создаем карту...');
+            console.log('Unmined успешно загружен, создаем карту...');
             
             try {
                 // Создаем карту с помощью Unmined
                 const map = window.unmined.createMap('map', {
+                    // Основные настройки
                     mapId: 'world',
                     imageFormat: 'png',
+                    
+                    // Настройки маркеров
                     markers: [],
                     markerIconFile: 'custom.pin.png',
-                    background: '#16213e',
+                    
+                    // Настройки отображения
+                    background: '#0d1117',
                     sea: true,
                     transparent: false,
                     smoothLoading: true,
+                    
+                    // Начальная позиция
                     center: [0, 0],
                     zoom: 0,
+                    
+                    // Уровни зума
                     minZoom: -2,
                     maxZoom: 8,
+                    
+                    // Автоматические границы мира
                     bounds: null,
+                    
+                    // Включить контроль координат
                     coordinateControl: true
                 });
                 
@@ -902,10 +854,13 @@
                 console.error('Ошибка при создании карты:', error);
                 
                 loadingOverlay.innerHTML = `
-                    <div style="text-align: center; color: #f05454;">
+                    <div style="text-align: center; color: #ff7b72;">
                         <i class="fas fa-bug" style="font-size: 3rem; margin-bottom: 20px;"></i>
-                        <h3 style="margin-bottom: 15px; color: #f05454;">Ошибка создания карты</h3>
+                        <h3 style="margin-bottom: 15px; color: #ff7b72;">Ошибка создания карты</h3>
                         <p>${error.message}</p>
+                        <p style="margin-top: 15px; font-size: 0.9rem; color: #8b949e;">
+                            Проверьте консоль браузера (F12) для подробностей
+                        </p>
                     </div>
                 `;
             }
@@ -913,7 +868,7 @@
         
         // Функция добавления точек на карту
         function addPointsToMap(map) {
-            console.log('Добавление точек на карту...');
+            console.log('Добавляем точки на карту...');
             
             minecraftPoints.forEach(point => {
                 // Пытаемся создать маркер через Unmined API
@@ -931,22 +886,26 @@
                         
                         map.addMarker(marker);
                     } catch (error) {
-                        console.warn('Создаем простой маркер:', error);
+                        console.warn('Не удалось создать маркер через Unmined API:', error);
                         createSimpleMarker(map, point);
                     }
                 } else {
                     createSimpleMarker(map, point);
                 }
             });
+            
+            console.log('Все точки добавлены на карту');
         }
         
-        // Функция создания простого маркера
+        // Функция создания простого маркера (запасной вариант)
         function createSimpleMarker(map, point) {
+            // Проверяем, что Leaflet доступен
             if (typeof L === 'undefined') {
-                console.warn('Leaflet не загружен');
+                console.warn('Leaflet не загружен, пропускаем маркер');
                 return;
             }
             
+            // Создаем простую иконку
             const icon = L.divIcon({
                 className: 'custom-marker',
                 html: `
@@ -971,10 +930,12 @@
                 iconAnchor: [18, 36]
             });
             
+            // Добавляем маркер
             const marker = L.marker([point.z, point.x], { icon: icon }).addTo(map);
             
+            // Добавляем всплывающее окно
             marker.bindPopup(`
-                <div style="min-width: 250px;">
+                <div style="min-width: 250px; max-width: 300px;">
                     <h3 style="color: ${point.color}; margin: 0 0 12px 0; font-size: 1.2rem;">
                         <i class="${pointIcons[point.type] || 'fas fa-map-marker-alt'}"></i> 
                         ${point.name}
@@ -985,7 +946,7 @@
                         padding: 10px;
                         border-radius: 6px;
                         font-family: 'Courier New', monospace;
-                        color: #1a1a2e;
+                        color: #238636;
                         font-size: 0.9rem;
                     ">
                         Координаты: X=${point.x}, Z=${point.z}
@@ -993,6 +954,7 @@
                 </div>
             `);
             
+            // При клике на маркер обновляем координаты
             marker.on('click', function() {
                 document.getElementById('coordX').textContent = point.x;
                 document.getElementById('coordZ').textContent = point.z;
@@ -1003,6 +965,8 @@
         
         // Функция настройки управления картой
         function setupMapControls(map) {
+            console.log('Настраиваем управление картой...');
+            
             // Кнопка приближения
             document.getElementById('zoomIn').addEventListener('click', function() {
                 map.zoomIn();
@@ -1024,19 +988,25 @@
                 const mapContainer = document.querySelector('.map-container');
                 
                 if (!document.fullscreenElement) {
+                    // Входим в полноэкранный режим
                     if (mapContainer.requestFullscreen) {
                         mapContainer.requestFullscreen();
                     } else if (mapContainer.webkitRequestFullscreen) {
                         mapContainer.webkitRequestFullscreen();
+                    } else if (mapContainer.msRequestFullscreen) {
+                        mapContainer.msRequestFullscreen();
                     }
                     
                     this.innerHTML = '<i class="fas fa-compress"></i>';
                     this.title = 'Выйти из полного экрана';
                 } else {
+                    // Выходим из полноэкранного режима
                     if (document.exitFullscreen) {
                         document.exitFullscreen();
                     } else if (document.webkitExitFullscreen) {
                         document.webkitExitFullscreen();
+                    } else if (document.msExitFullscreen) {
+                        document.msExitFullscreen();
                     }
                     
                     this.innerHTML = '<i class="fas fa-expand"></i>';
@@ -1044,6 +1014,7 @@
                 }
             });
             
+            // Обработчик выхода из полноэкранного режима
             document.addEventListener('fullscreenchange', function() {
                 const btn = document.getElementById('fullscreenBtn');
                 if (!document.fullscreenElement) {
@@ -1055,15 +1026,18 @@
         
         // Функция обновления координат
         function setupCoordinatesUpdate(map) {
+            // Обновляем координаты при движении мыши
             map.on('mousemove', function(e) {
                 const coords = e.latlng;
                 document.getElementById('coordX').textContent = Math.round(coords.lng);
                 document.getElementById('coordZ').textContent = Math.round(coords.lat);
                 
+                // Генерируем случайную высоту Y
                 const y = Math.floor(Math.random() * 40) + 40;
                 document.getElementById('coordY').textContent = y;
             });
             
+            // Обновляем координаты при движении карты
             map.on('move', function() {
                 const center = map.getCenter();
                 document.getElementById('coordX').textContent = Math.round(center.lng);
@@ -1074,33 +1048,23 @@
         // Функция центрирования карты на точке
         function centerMapOnPoint(x, z) {
             if (window.unmined && window.unmined.map) {
+                // Устанавливаем центр и уровень зума
                 window.unmined.map.setView([z, x], 3);
+                
+                // Обновляем отображение координат
                 document.getElementById('coordX').textContent = x;
                 document.getElementById('coordZ').textContent = z;
             }
         }
         
-        // Функция обновления количества игроков
-        function updatePlayerCount() {
-            const playerCountElement = document.getElementById('playerCount');
-            
-            // Имитация изменения количества игроков
-            setInterval(() => {
-                const current = parseInt(playerCountElement.textContent);
-                const change = Math.random() > 0.5 ? 1 : -1;
-                const newCount = Math.max(8, Math.min(20, current + change));
-                
-                if (newCount !== current) {
-                    playerCountElement.textContent = newCount;
-                }
-            }, 15000);
-        }
-        
-        console.log('=== Карта сервера Minecraft ===');
-        console.log('Версия: 1.21.10');
+        // Отладочная информация
+        console.log('=== Информация о карте ===');
+        console.log('Сид мира: 5215507659080688903');
+        console.log('Версия Minecraft: 1.21.10');
+        console.log('Рендер: Unmined');
         console.log('Количество точек: ' + minecraftPoints.length);
-        console.log('Карта готова к использованию');
-        console.log('==============================');
+        console.log('Используются файлы из корневой папки');
+        console.log('=========================');
     </script>
 </body>
 </html>
